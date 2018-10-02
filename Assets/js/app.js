@@ -1,5 +1,4 @@
-
-
+const key = 'LBXLGGGLHCVTA6MUI2PB';
 //COUNTRIES// //COUNTRIES// //COUNTRIES// //COUNTRIES// //COUNTRIES// //COUNTRIES// //COUNTRIES//
 // $.ajax({
 //     url: `https://www.eventbriteapi.com/v3/system/countries/?token=LBXLGGGLHCVTA6MUI2PB` ,
@@ -15,11 +14,16 @@
 //   });
 
 //CATEGORIES//  //CATEGORIES// //CATEGORIES// //CATEGORIES// //CATEGORIES// //CATEGORIES//
+var city= '';
 $.ajax({
-    url: `https://www.eventbriteapi.com/v3/categories/?token=LBXLGGGLHCVTA6MUI2PB` ,
+    url: `https://www.eventbriteapi.com/v3/events/search/?location.address=Dallas&expand=organizer,venue&token=${key}`,
     // Input the method type here (Hint: 'GET', 'POST', 'PUT', 'DELETE')
     method: 'GET'
-  }).then(function(response) {
-      console.log(response.categories[0])
+  }).then(function(res) {
+      for(var i = 0; i < 10; i++){
+          console.log(res);
+    //    console.log(res.events[i].start.timezone);
+      }
+     
     
   });
