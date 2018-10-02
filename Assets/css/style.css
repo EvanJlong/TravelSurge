@@ -2,8 +2,8 @@ h1{
     font-family: 'Oswald', Arial, Helvetica, sans-serif;
     text-align:center;
     color:white;
-    font-size: 90px;
-    padding-top: 50px;
+    font-size: 8vw;
+    padding-top: 30px;
 }
 
 body{
@@ -12,4 +12,10 @@ body{
     height: 100vh;
     z-index: -1;
     background-repeat: no-repeat;
+}
+
+@media (orientation:portrait){
+    body{
+        background-image: url("../images/background-imageP.jpg");
+    }
 }
