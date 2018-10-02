@@ -14,6 +14,16 @@ body{
     background-repeat: no-repeat;
 }
 
+#formz{
+padding: 30px
+
+}
+#main{
+    background-color: white;
+    opacity: .7;
+    height: 50vh;
+}
+
 @media (orientation:portrait){
     body{
         background-image: url("../images/background-imageP.jpg");
