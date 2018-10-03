@@ -19,6 +19,11 @@ html, body{
     
   }
 
+#formz{
+padding: 30px;
+opacity: 1.0;
+}
+
 #main{
     background-color: white;
     opacity: .7;
