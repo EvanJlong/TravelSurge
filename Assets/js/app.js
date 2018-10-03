@@ -14,9 +14,9 @@ const key = 'LBXLGGGLHCVTA6MUI2PB';
 //   });
 
 //CATEGORIES//  //CATEGORIES// //CATEGORIES// //CATEGORIES// //CATEGORIES// //CATEGORIES//
-var city= '';
+let city = prompt("type in city");
 $.ajax({
-    url: `https://www.eventbriteapi.com/v3/events/search/?location.address=Dallas&expand=organizer,venue&token=${key}`,
+    url: `https://www.eventbriteapi.com/v3/events/search/?location.address=${city}&expand=organizer,venue&token=${key}`,
     // Input the method type here (Hint: 'GET', 'POST', 'PUT', 'DELETE')
     method: 'GET'
   }).then(function(res) {
@@ -28,4 +28,39 @@ $.ajax({
     
   });
 
- 
+;
+
+$.ajax({
+    url: `https://www.eventbriteapi.com/v3/categories/${catId}/ ?token=${key}`,
+    method: 'GET'
+}).then(function(response){
+    for( let i = 0 ; i < response.categories.length; i++){
+        let categories = {
+            name: '',
+            id: ''
+        } 
+
+        categories.name = response.categories[i].name;
+        console.log(response.categories.name);
+    }
+
+    
+
+});
+
+$.ajax({
+    url:`https://www.eventbriteapi.com/v3/start_date.range_start/?token=${key}`,
+    method:'GET'
+}).then(function(response){
+    for( let i = 0; i < response.start_date.range_start.length; i++){
+        let eventDate = {
+            date: '',
+            time: ''
+        }
+
+        console.log(eventDate[i].response_start.range_start)
+    }
+})
+
+
+  
