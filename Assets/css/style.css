@@ -2,7 +2,7 @@ h1{
     font-family: 'Oswald', Arial, Helvetica, sans-serif;
     text-align:center;
     color:white;
-    font-size: 8rem;
+    font-size: 4rm;
     padding-top: 30px;
 }
 
@@ -27,7 +27,7 @@ opacity: 1.0;
 #main{
     background-color: white;
     opacity: .7;
-}
+}   
 
 @media (orientation:portrait){
     html, body{
