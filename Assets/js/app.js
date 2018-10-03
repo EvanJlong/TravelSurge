@@ -42,6 +42,8 @@ const key = 'LBXLGGGLHCVTA6MUI2PB';
 //CATEGORIES// //CATEGORIES// //CATEGORIES// //CATEGORIES// 
 let city = prompt("type in city");
 let catID = prompt("catID?");
+// let dateinput = prompt("what date?");
+// let date = ("start_date.range_start=2018-10-05")
 let eventArray = [];
 $.ajax({
     url: `https://www.eventbriteapi.com/v3/events/search/?location.address=${city}&expand=organizer,venue&token=${key}`,
@@ -54,7 +56,7 @@ $.ajax({
     //    console.log(res.events[i].start.timezone);
     if (`${catID}` === res.events[i].category_id){
         eventArray.push(res.events[i])
-        
+       
     }
       }
       console.log(eventArray);
