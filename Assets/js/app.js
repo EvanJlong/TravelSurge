@@ -14,9 +14,9 @@ const key = 'LBXLGGGLHCVTA6MUI2PB';
 //   });
 
 //CATEGORIES//  //CATEGORIES// //CATEGORIES// //CATEGORIES// //CATEGORIES// //CATEGORIES//
-var city= '';
+let city = prompt("type in city punk");
 $.ajax({
-    url: `https://www.eventbriteapi.com/v3/events/search/?location.address=Dallas&expand=organizer,venue&token=${key}`,
+    url: `https://www.eventbriteapi.com/v3/events/search/?location.address=${city}&expand=organizer,venue&token=${key}`,
     // Input the method type here (Hint: 'GET', 'POST', 'PUT', 'DELETE')
     method: 'GET'
   }).then(function(res) {
