@@ -40,7 +40,8 @@ const key = 'LBXLGGGLHCVTA6MUI2PB';
 
 
 //CATEGORIES// //CATEGORIES// //CATEGORIES// //CATEGORIES// 
-let city = prompt("type in city");
+const city = $('#citField').val();
+const catID = $('#catField').val();
 let catID = prompt("catID?");
 // let dateinput = prompt("what date?");
 // let date = ("start_date.range_start=2018-10-05")
@@ -60,7 +61,8 @@ $.ajax({
     }
       }
       console.log(eventArray);
+      $('#id').append(`<div class="class"></div>`)
   });
  
-
+//   table.setData("`https://www.eventbriteapi.com/v3/events/search/?location.address=Dallas&expand=organizer,venue&token=LBXLGGGLHCVTA6MUI2PB`,", {key1:"name"}, "GET");
 
