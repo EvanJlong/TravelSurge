@@ -2,30 +2,31 @@ h1{
     font-family: 'Oswald', Arial, Helvetica, sans-serif;
     text-align:center;
     color:white;
-    font-size: 8vw;
+    font-size: 8rem;
     padding-top: 30px;
 }
 
 body{
     background-image: url("../images/background-image.jpg");
-    background-size: 100% 100%;
-    height: 100vh;
+    background-size: 100vw 100vh;
+    /* background-size: 100vh; */
     z-index: -1;
     background-repeat: no-repeat;
 }
 
 #formz{
-padding: 30px
-
+padding: 30px;
+opacity: 1.0;
 }
+
 #main{
     background-color: white;
     opacity: .7;
-    height: 50vh;
 }
 
 @media (orientation:portrait){
     body{
         background-image: url("../images/background-imageP.jpg");
+        background-size: 100vw 100vh;
     }
 }
