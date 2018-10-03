@@ -10,24 +10,22 @@ html, body{
     height: 100%;
   }
   body { 
-              background-image: url(../images/background-image.jpg) ;
-              background-position: center center;
-              background-repeat:  no-repeat;
-              background-attachment: fixed;
-              background-size:  cover;
-              background-color: #999;
+    background-image: url(../images/background-image.jpg) ;
+    background-position: center center;
+    background-repeat:  no-repeat;
+    background-attachment: fixed;
+    background-size:  cover;
+    background-color: #999;
     
   }
 
 #formz{
-padding: 30px;
-opacity: 1.0;
+    padding: 30px;
 }
 
 #main{
-    background-color: white;
-    opacity: .7;
-}   
+    margin-top: 20vh;
+}
 
 @media (orientation:portrait){
     html, body{
