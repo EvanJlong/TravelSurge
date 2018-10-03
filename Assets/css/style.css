@@ -2,26 +2,42 @@ h1{
     font-family: 'Oswald', Arial, Helvetica, sans-serif;
     text-align:center;
     color:white;
-    font-size: 8rem;
+    font-size: 4rm;
     padding-top: 30px;
 }
 
-body{
-    background-image: url("../images/background-image.jpg");
-    background-size: 100vw 100vh;
-    /* background-size: 100vh; */
-    z-index: -1;
-    background-repeat: no-repeat;
+html, body{
+    height: 100%;
+  }
+  body { 
+    background-image: url(../images/background-image.jpg) ;
+    background-position: center center;
+    background-repeat:  no-repeat;
+    background-attachment: fixed;
+    background-size:  cover;
+    background-color: #999;
+    
+  }
+
+#formz{
+    padding: 30px;
 }
 
 #main{
-    background-color: white;
-    opacity: .7;
+    margin-top: 20vh;
 }
 
 @media (orientation:portrait){
-    body{
-        background-image: url("../images/background-imageP.jpg");
-        background-size: 100vw 100vh;
-    }
+    html, body{
+        height: 100%;
+      }
+      body { 
+                  background-image: url(../images/background-imageP.jpg) ;
+                  background-position: center center;
+                  background-repeat:  no-repeat;
+                  background-attachment: fixed;
+                  background-size:  cover;
+                  background-color: #999;
+        
+      }
 }
