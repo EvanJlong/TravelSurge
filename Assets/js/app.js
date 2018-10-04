@@ -20,6 +20,7 @@ $.ajax({
         // console.log(categories);
         categoryArray.push(categories);
     }
+
     // for (let i = 0; i < categoryArray.length; i++){
         // $(".dropdown-menu").append(`<a class="dropdown-item" id="${categoryArray[i].id}">${categoryArray[i].name}</a>`)
         // $('#inputState').append(new Option(`${categoryArray[i].name}`,`${categoryArray[i].id}`));
