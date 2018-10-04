@@ -21,8 +21,10 @@ $.ajax({
         categoryArray.push(categories);
     }
     for (let i = 0; i < categoryArray.length; i++){
-        $(".dropdown-menu").append(`<a class="dropdown-item">${categoryArray[i].name}</a>`)
+        $(".dropdown-menu").append(`<a class="dropdown-item" id="${categoryArray[i].id}">${categoryArray[i].name}</a>`)
+        $('#inputState').append(new Option(`${categoryArray[i].name}`,`${categoryArray[i].id}`));
       } 
+
     //   <a class="dropdown-item" href="#">${categoryArray[i].name}</a>
   });
 //////////////category array has now been populated and appended to the dropdown//////////////
@@ -85,5 +87,10 @@ $.ajax({
 //   table.setData("`https://www.eventbriteapi.com/v3/events/search/?location.address=Dallas&expand=organizer,venue&token=LBXLGGGLHCVTA6MUI2PB`,", {key1:"name"}, "GET");
 
 
+
+function dropdownFunction() {
+    var x = document.getElementById("mySelect").value;
+
+}
 
 $('#searchBtn').on('click', searchFunction);
