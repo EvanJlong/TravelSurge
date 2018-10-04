@@ -42,6 +42,7 @@ const key = 'LBXLGGGLHCVTA6MUI2PB';
 //CATEGORIES// //CATEGORIES// //CATEGORIES// //CATEGORIES// 
 let city = prompt("type in city");
 let catID = prompt("catID?");
+let startDate = prompt("Date");
 // let dateinput = prompt("what date?");
 // let date = ("start_date.range_start=2018-10-05")
 let eventArray = [];
@@ -61,6 +62,8 @@ $.ajax({
       }
       console.log(eventArray);
   });
+
+
  
 
 
