@@ -89,26 +89,7 @@ $.ajax({
 
 
 
-$.ajax({
-    url:`https://ws.homeaway.com/public/listing`,
-    method:'GET'
-}).then(function(response){
-    console.log
-})
-
-
-
-
-
-
-
-
-
-function dropdownFunction() {
-    var x = document.getElementById("mySelect").value;
-
-}
+  
 
 $('#searchBtn').on('click', searchFunction);
-
 

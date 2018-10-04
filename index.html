@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./Assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald:600" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Exo:400,900' rel='stylesheet' type='text/css'>
+
     <title>TravelSurge</title>
 </head>
 
@@ -53,10 +54,35 @@
                         
                     </select>
 
+                    <fieldset>
+                        <legend>Select Dates</legend>
+
+                        <div>
+                            <label for="start">Start</label>
+                            <input type="date" id="start" name="trip"
+                            value="2018-07-22"
+                            min="2018-01-01" max="2018-12-31"/>
+                        </div>
+
+                        <div>
+                            <label for="end">End</label>
+                            <input type="date" id="end" name="trip"
+                            value="2018-07-29" min="2018-01-01" max="2020-12-31"/>
+                        </div>
+                        
+                    </fieldset>
+                    
+                    
 
             </form>
         </div>
     </div>
+
+    
+
+  
+
+
     <script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
