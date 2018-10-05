@@ -24,6 +24,10 @@ html, body{
     max-height: 300px;
 }
 
+.card-body{
+    background-color: white;
+}
+
 #formz{
     padding: 30px;
 }
