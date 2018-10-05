@@ -33,7 +33,15 @@ html, body{
 }
 
 #main{
-    margin-top: 20vh;
+    margin: 0vh 0 0 30%;
+}
+
+/* #input-group{
+    opacity: .7;
+} */
+
+#dates{
+    
 }
 
 @media (orientation:portrait){
