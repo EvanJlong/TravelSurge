@@ -22,6 +22,7 @@ html, body{
 .menu-scroll {
     overflow-y: scroll;
     max-height: 300px;
+    opacity: .7;
 }
 
 .card-body{
