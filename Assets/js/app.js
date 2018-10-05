@@ -88,6 +88,7 @@ $.ajax({
     }
 
       }
+     
       console.log(eventArray);
       
     //   $('#id').append(`<div class="class"></div>`)
@@ -101,13 +102,30 @@ $.ajax({
 
   });
 }
+
+
+let startDate = {
+    "timezone": "America/Los_Angelas",
+    "utc": "2018-05-12T02:00:00Z",
+    "local": "2018-05-11T19:00:00"
+}
+
+$.ajax({
+    url:`https://www.eventbriteapi.com/v3/events/search/start_date.range_start=${startDate.timezone}&expand=organizer,venue&token=${key}`,
+    method: 'GET'
+}).then(function(response){
+    console.log(response.startDate.timezone);
+})
+
+
+
+
+
  
 //   table.setData("`https://www.eventbriteapi.com/v3/events/search/?location.address=Dallas&expand=organizer,venue&token=LBXLGGGLHCVTA6MUI2PB`,", {key1:"name"}, "GET");
 
 // function dropdownFunction() {
 //     var x = document.getElementById("mySelect").value;
-
-// }
 
 
 // $.ajax({
@@ -129,7 +147,4 @@ $.ajax({
 
 
 
-
 $('#searchBtn').on('click', searchFunction);
-
-
