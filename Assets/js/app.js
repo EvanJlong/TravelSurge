@@ -13,7 +13,7 @@ $.ajax({
     method: 'GET'
   }).then(function(response) {
       
-    console.log(response)
+    
     for (let i=0; i < response.categories.length; i++){
         let categories = {
             name: "",
@@ -25,45 +25,10 @@ $.ajax({
         categoryArray.push(categories);
     }
 
-    // for (let i = 0; i < categoryArray.length; i++){
-        // $(".dropdown-menu").append(`<a class="dropdown-item" id="${categoryArray[i].id}">${categoryArray[i].name}</a>`)
-        // $('#inputState').append(new Option(`${categoryArray[i].name}`,`${categoryArray[i].id}`));
-    //   } 
-
-    //   <a class="dropdown-item" href="#">${categoryArray[i].name}</a>
   });
-//////////////category array has now been populated and appended to the dropdown//////////////
-    // taking the value entered into the city field and storing it//
-
-
-//   console.log(categoryArray);
-
-//   for (let i = 0; i < categoryArray.length; i++){
-//     $(".dropdown-menu").append(`<a class = "dropdown-item">${categoryArray[i].name}</a>`)
-//   } 
-
-
-/////////////category search working
-
-//   $.ajax({
-//       url: `https://www.eventbriteapi.com/v3/categories/${catID}/?token=${key}` ,
-//       // Input the method type here (Hint: 'GET', 'POST', 'PUT', 'DELETE')
-//       method: 'GET'
-//     }).then(function(response) {
-        
-//       console.log(response)
-
-//       });
-
-  
-
-
 //CATEGORIES// //CATEGORIES// //CATEGORIES// //CATEGORIES// 
 let eventArray = [];
 
-
-// let dateinput = prompt("what date?");
-// let date = ("start_date.range_start=2018-10-05")
 
 const searchFunction = function(e){
     e.preventDefault();
@@ -84,9 +49,8 @@ $.ajax({
     //    console.log(res.events[i].start.timezone);
     if (`${catID}` === res.events[i].category_id){
         eventArray.push(res.events[i])
-        
+       
     }
-
       }
      
       console.log(eventArray);
@@ -103,6 +67,7 @@ $.ajax({
   });
 }
 
+//START DATE TESTING FOR NICK////START DATE TESTING FOR NICK//
 
 // let startDate = {
 //     "timezone": "America/Los_Angelas",
@@ -111,40 +76,29 @@ $.ajax({
 // }
 
 // $.ajax({
-//     url:`https://www.eventbriteapi.com/v3/events/search/start_date.range_start=${startDate.timezone}&expand=organizer,venue&token=${key}`,
+//     url:`https://www.eventbriteapi.com/v3/events/search/?start_date.range_start=${startDate.timezone}&expand=organizer,venue&token=${key}`,
 //     method: 'GET'
 // }).then(function(response){
 //     console.log(response.startDate.timezone);
 // })
+//START DATE TESTING FOR NICK////START DATE TESTING FOR NICK//
 
+const GoogleFunc = function() {
+$.ajax({
+    //general GOOGLE Places URL//
+    // url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/output?parameters`
 
-
-
-
- 
-//   table.setData("`https://www.eventbriteapi.com/v3/events/search/?location.address=Dallas&expand=organizer,venue&token=LBXLGGGLHCVTA6MUI2PB`,", {key1:"name"}, "GET");
-
-// function dropdownFunction() {
-//     var x = document.getElementById("mySelect").value;
-
-
-// $.ajax({
-//     // url: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurants&keyword=cruise&key=AIzaSyC3dwU3xZnvNdj1ZCr4r98XszdB3uu3N1o`,
-
-//     // url: ` https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=mongolian%20grill&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:2000@47.6918452,-122.2226413&key=AIzaSyC3dwU3xZnvNdj1ZCr4r98XszdB3uu3N1o`,
-
-//     // url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/output?parameters`
-
-//     url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=hotel&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:4000@47.6918452,-122.2226413&key=AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo`,
+    //proximity GOOGLE PlacesURL
+    url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=hotel&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:4000@47.6918452,-122.2226413&key=AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo`,
     
-//     method: 'GET'
-//   }).then(function(res) {
-//     //   for(var i = 0; i < res.events.length; i++){
-//         // console.log(typeof(res.events[i].category_id));
-//         console.log(res);
-//     //    console.log(res.events[i].start.ti
-//   });
+    method: 'GET'
+  }).then(function(res) {
+    //   for(var i = 0; i < res.events.length; i++){
+        // console.log(typeof(res.events[i].category_id));
+        console.log(res);
+    //    console.log(res.events[i].start.ti
+  });
 
-
+}
 
 $('#searchBtn').on('click', searchFunction);
