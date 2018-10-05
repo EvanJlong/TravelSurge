@@ -70,18 +70,24 @@ const searchFunction = function (e) {
 /////RENDER FUNCTION/////
 const render = function () {
     let content = '';
+    $('#results').empty();
     for (let i = 0; i < eventArray.length; i++) {
-        content = `<div class="row">
+        content += `<div class="row">
             <div class="card col-6">
-                <img class="card-img-top" src="${eventArray[i].logo.url}" alt="Card image">
+            <a href="${eventArray[i].url}" target="_blank"> <img class="card-img-top" src="${eventArray[i].logo.url}" alt="Card image"></a>
             </div>
-            <div class="card-body col-6">
-                <h5 class="card-title">${eventArray[i].name.text}</h5>
-                <p class="card-text">${eventArray[i].description.text}</p>
-                <a href="${eventArray[i].url}" class="btn btn-primary">Buy Tickets!</a>
-            </div>
+            <div class="card-body col-6" id="results-body">
+                <h5 class="card-title">${eventArray[i].name.text}</h5>`;
+                if(eventArray[i].description.text !== null){
+                    content += `<p class="card-text">${eventArray[i].description.text}</p>
+                    <a href="${eventArray[i].url}" target="_blank" class="btn btn-primary">Buy Tickets!</a>`
+                }
+                else{
+                    content += `<p class="card-text">Please join us for this amazing event!</p>
+                    <a href="${eventArray[i].url}" target="_blank" class="btn btn-primary">Buy Tickets!</a>`
+                }
+            content += `</div>
         </div>`
-        
     }
     $('#results').append(content);
 }

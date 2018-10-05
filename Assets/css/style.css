@@ -22,11 +22,11 @@ html, body{
 .menu-scroll {
     overflow-y: scroll;
     max-height: 300px;
-    opacity: .7;
 }
 
 .card-body{
     background-color: white;
+    opacity: .7;
 }
 
 #formz{
@@ -48,6 +48,5 @@ html, body{
         background-attachment: fixed;
         background-size:  cover;
         background-color: #999;
-        
       }
 }
