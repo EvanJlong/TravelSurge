@@ -63,7 +63,27 @@ const searchFunction = function (e) {
         $("#inputState").val();
         // $("select#inputState").change(resetFieldToDefault);
         GoogleFunc();
+        render();
     });
+}
+
+/////RENDER FUNCTION/////
+const render = function () {
+    let content = '';
+    for (let i = 0; i < eventArray.length; i++) {
+        content = `<div class="row">
+            <div class="card col-6">
+                <img class="card-img-top" src="${eventArray[i].logo.url}" alt="Card image">
+            </div>
+            <div class="card-body col-6">
+                <h5 class="card-title">${eventArray[i].name.text}</h5>
+                <p class="card-text">${eventArray[i].description.text}</p>
+                <a href="${eventArray[i].url}" class="btn btn-primary">Buy Tickets!</a>
+            </div>
+        </div>`
+        
+    }
+    $('#results').append(content);
 }
 
 //START DATE TESTING FOR NICK////START DATE TESTING FOR NICK//
