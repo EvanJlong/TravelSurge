@@ -111,10 +111,10 @@ let startDate = {
 }
 
 $.ajax({
-    url:`https://www.eventbriteapi.com/v3/events/search/start_date.range_start=${startDate.timezone}&expand=organizer,venue&token=${key}`,
+    url:`https://www.eventbriteapi.com/v3/events/search/?start_date.range_start=${startDate.local}&start_date.range_end=2018-10-11T19:00:00&expand=organizer,venue&token=${key}`,
     method: 'GET'
 }).then(function(response){
-    console.log(response.startDate.timezone);
+    console.log(response);
 })
 
 
