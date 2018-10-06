@@ -8,16 +8,16 @@ const placesKeypaid = 'AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo'
 //////////////this populates the category array//////////////
 categoryArray = [];
 $.ajax({
-    url: `https://www.eventbriteapi.com/v3/categories/?token=${key}` ,
+    url: `https://www.eventbriteapi.com/v3/categories/?token=${key}`,
     // Input the method type here (Hint: 'GET', 'POST', 'PUT', 'DELETE')
     method: 'GET'
-  }).then(function(response) {
-      
-    console.log(response)
-    for (let i=0; i < response.categories.length; i++){
+}).then(function (response) {
+
+
+    for (let i = 0; i < response.categories.length; i++) {
         let categories = {
             name: "",
-            id : "",
+            id: "",
         };
         categories.name = response.categories[i].name;
         categories.id = response.categories[i].id;
@@ -25,91 +25,73 @@ $.ajax({
         categoryArray.push(categories);
     }
 
-    // for (let i = 0; i < categoryArray.length; i++){
-        // $(".dropdown-menu").append(`<a class="dropdown-item" id="${categoryArray[i].id}">${categoryArray[i].name}</a>`)
-        // $('#inputState').append(new Option(`${categoryArray[i].name}`,`${categoryArray[i].id}`));
-    //   } 
-
-    //   <a class="dropdown-item" href="#">${categoryArray[i].name}</a>
-  });
-//////////////category array has now been populated and appended to the dropdown//////////////
-    // taking the value entered into the city field and storing it//
-
-
-//   console.log(categoryArray);
-
-//   for (let i = 0; i < categoryArray.length; i++){
-//     $(".dropdown-menu").append(`<a class = "dropdown-item">${categoryArray[i].name}</a>`)
-//   } 
-
-
-/////////////category search working
-
-//   $.ajax({
-//       url: `https://www.eventbriteapi.com/v3/categories/${catID}/?token=${key}` ,
-//       // Input the method type here (Hint: 'GET', 'POST', 'PUT', 'DELETE')
-//       method: 'GET'
-//     }).then(function(response) {
-        
-//       console.log(response)
-
-//       });
-
-  
-
-
+});
 //CATEGORIES// //CATEGORIES// //CATEGORIES// //CATEGORIES// 
 let eventArray = [];
 
 
-// let dateinput = prompt("what date?");
-// let date = ("start_date.range_start=2018-10-05")
-
-const searchFunction = function(e){
+const searchFunction = function (e) {
     e.preventDefault();
     const city = $('#cityForm').val().trim();
     // let city = prompt("asdf");
-
-// taking the value entered into the city field and storing it//
-    const catID = $('#inputState').val();
-$.ajax({
-    url: `https://www.eventbriteapi.com/v3/events/search/?location.address=${city}&expand=organizer,venue&token=${key}`,
-
-
-    method: 'GET'
-  }).then(function(res) {
-      for(var i = 0; i < res.events.length; i++){
-        // console.log(typeof(res.events[i].category_id));
-        // console.log(res);
-    //    console.log(res.events[i].start.timezone);
-    if (`${catID}` === res.events[i].category_id){
-        eventArray.push(res.events[i])
-        
-    }
-
-      }
-     
-      console.log(eventArray);
-      
-    //   $('#id').append(`<div class="class"></div>`)
-      console.log(city);
-    console.log(catID);
-
-    $('#cityForm').empty();
-    $("#inputState").val();
     eventArray = [];
-    // $("select#inputState").change(resetFieldToDefault);
+    // taking the value entered into the city field and storing it//
+    const catID = $('#inputState').val();
+    $.ajax({
+        url: `https://www.eventbriteapi.com/v3/events/search/?location.address=${city}&expand=organizer,venue&token=${key}`,
+        method: 'GET'
+    }).then(function (res) {
+        for (var i = 0; i < res.events.length; i++) {
+            // console.log(typeof(res.events[i].category_id));
+            // console.log(res);
+            //    console.log(res.events[i].start.timezone);
+            if (`${catID}` === res.events[i].category_id) {
+                eventArray.push(res.events[i])
 
-  });
+            }
+
+        }
+
+        console.log(eventArray);
+
+        //   $('#id').append(`<div class="class"></div>`)
+        console.log(city);
+        console.log(catID);
+
+        $('#cityForm').empty();
+        $("#inputState").val();
+        // $("select#inputState").change(resetFieldToDefault);
+        GoogleFunc();
+        render();
+    });
 }
 
-
-let startDate = {
-    "timezone": "America/Los_Angelas",
-    "utc": "2018-05-12T02:00:00Z",
-    "local": "2018-05-11T19:00:00"
+/////RENDER FUNCTION/////
+const render = function () {
+    let content = '';
+    $('#results').empty();
+    for (let i = 0; i < eventArray.length; i++) {
+        content += `<div class="row">
+            <div class="card col-6">
+            <a href="${eventArray[i].url}" target="_blank"> <img class="card-img-top" src="${eventArray[i].logo.url}" alt="Card image"></a>
+            </div>
+            <div class="card-body col-6" id="results-body">
+                <h5 class="card-title">${eventArray[i].name.text}</h5>`;
+        if (eventArray[i].description.text !== null) {
+            content += `<p class="card-text">${eventArray[i].description.text}</p>
+                    <a href="${eventArray[i].url}" target="_blank" class="btn btn-primary">Buy Tickets!</a>`
+        }
+        else {
+            content += `<p class="card-text">Please join us for this amazing event!</p>
+                    <a href="${eventArray[i].url}" target="_blank" class="btn btn-primary">Buy Tickets!</a>`
+        }
+        content += `</div>
+        </div>`
+    }
+    $('#results').append(content);
 }
 
+<<<<<<< HEAD
 $.ajax({
     url:`https://www.eventbriteapi.com/v3/events/search/?start_date.range_start=${startDate.local}&start_date.range_end=2018-10-11T19:00:00&expand=organizer,venue&token=${key}`,
     method: 'GET'
@@ -126,25 +108,108 @@ $.ajax({
 
 // function dropdownFunction() {
 //     var x = document.getElementById("mySelect").value;
+=======
+//START DATE TESTING FOR NICK////START DATE TESTING FOR NICK//
+>>>>>>> db9fbbcc2a147a649c190a28fc9a5c319c044279
 
+// let startDate = {
+//     "timezone": "America/Los_Angelas",
+//     "utc": "2018-05-12T02:00:00Z",
+//     "local": "2018-05-11T19:00:00"
+// }
 
 // $.ajax({
-//     // url: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurants&keyword=cruise&key=AIzaSyC3dwU3xZnvNdj1ZCr4r98XszdB3uu3N1o`,
-
-//     // url: ` https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=mongolian%20grill&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:2000@47.6918452,-122.2226413&key=AIzaSyC3dwU3xZnvNdj1ZCr4r98XszdB3uu3N1o`,
-
-//     // url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/output?parameters`
-
-//     url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=hotel&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:4000@47.6918452,-122.2226413&key=AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo`,
-    
+//     url:`https://www.eventbriteapi.com/v3/events/search/?start_date.range_start=${startDate.timezone}&expand=organizer,venue&token=${key}`,
 //     method: 'GET'
-//   }).then(function(res) {
-//     //   for(var i = 0; i < res.events.length; i++){
-//         // console.log(typeof(res.events[i].category_id));
-//         console.log(res);
-//     //    console.log(res.events[i].start.ti
-//   });
+// }).then(function(response){
+//     console.log(response.startDate.timezone);
+// })
+//START DATE TESTING FOR NICK////START DATE TESTING FOR NICK//
 
+const GoogleFunc = function () {
+    let hotelArray = [];
+    for (let i = 0; i < eventArray.length; i++) {
+        let coords = eventArray[i].venue.address.latitude + ',' + eventArray[i].venue.address.longitude;
+        // console.log(coords);
+        // let logo = eventArray[i].logo.url;
+        // console.log(logo);
+        // let eventName = eventArray[i].name.text;
+        // console.log(eventName);
+        // let dt = eventArray[i].start.local;
+        // console.log(dt);
+        // let map = '';
+        // let link = eventArray[i].url;
+        // console.log(link);
 
+        ////////ATTEMPTED HTTP REQUEST
+        // var xhr = new XMLHttpRequest();
+        // xhr.open('GET', `https://people.googleapis.com/maps/api/place/findplacefromtext/json?input=hotel&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:10000@${coords}&key=AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo`);    
+
+        $.ajax({
+            //general GOOGLE Places URL//
+            // url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/output?parameters`
+            //proximity GOOGLE PlacesURL
+            url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=hotel&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:10000@${coords}&key=AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo`,
+            method: 'GET'
+        }).then(function (res) {
+            //   for(var i = 0; i < res.events.length; i++){
+            // console.log(typeof(res.events[i].category_id));
+            // console.log(res);
+            hotelArray.push(res);
+            //    console.log(res.events[i].start.ti
+        });
+    }
+    console.log(hotelArray);
+    let restArray = [];
+    for (let i = 0; i < eventArray.length; i++) {
+        let coords = eventArray[i].venue.address.latitude + ',' + eventArray[i].venue.address.longitude;
+        // console.log(coords);
+        // let logo = eventArray[i].logo.url;
+        // console.log(logo);
+        // let eventName = eventArray[i].name.text;
+        // console.log(eventName);
+        // let dt = eventArray[i].start.local;
+        // console.log(dt);
+        // let map = '';
+        // let link = eventArray[i].url;
+        // console.log(link);
+
+        ////////ATTEMPTED HTTP REQUEST
+        // var xhr = new XMLHttpRequest();
+        // xhr.open('GET', `https://people.googleapis.com/maps/api/place/findplacefromtext/json?input=hotel&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:10000@${coords}&key=AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo`);    
+
+        $.ajax({
+            //general GOOGLE Places URL//
+            // url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/output?parameters`
+            //proximity GOOGLE PlacesURL
+            url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=restaurant&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:10000@${coords}&key=AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo`,
+            method: 'GET'
+        }).then(function (res) {
+            //   for(var i = 0; i < res.events.length; i++){
+            // console.log(typeof(res.events[i].category_id));
+            // console.log(res);
+            restArray.push(res);
+            //    console.log(res.events[i].start.ti
+        });
+    }
+    console.log(restArray);    
+}
+
+///////FOURSQUARE
+// function getFoursquare(){
+//     var url = "https://api.foursquare.com/v2/venues/search?v=20161016&ll=34.0707998%2C%20-84.0554183&query=park&intent=browse&radius=2000&client_id=0ODJZDHLKB0H32NCNULADKFHVKHCVACX3DZJVYLPZYQYF4XO&client_secret=DKA4ZIWNG5QGLKGJ0LYJQKRIEZLRFEWOHERYXQGKF2FHFC0X";
+//     $.ajax({
+//       url: url,
+//       dataType: 'json',
+//       success: function(data){
+//         var venues = data.response.venues;
+//         $.each(venues, function(i,venue){
+//           $('p').append(venue.name + '<br />');
+//         });
+//       }
+//     });
+//   };
+  
+//   getFoursquare();
 
 $('#searchBtn').on('click', searchFunction);

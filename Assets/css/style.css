@@ -2,8 +2,10 @@ h1{
     font-family: 'Oswald', Arial, Helvetica, sans-serif;
     text-align:center;
     color:white;
-    font-size: 4rm;
+    font-size: 4rem;
     padding-top: 30px;
+    margin: 0vh 0 0 -5%;
+
 }
 
 html, body{
@@ -19,9 +21,22 @@ html, body{
     
   }
 
+  hr{
+    color: rgb(253, 252, 252);
+    background-color: rgb(252, 252, 252);
+    height: 5px;
+
+  }
+
 .menu-scroll {
     overflow-y: scroll;
     max-height: 300px;
+}
+
+.card-body{
+    background-color: white;
+    opacity: .7;
+
 }
 
 #formz{
@@ -29,20 +44,31 @@ html, body{
 }
 
 #main{
-    margin-top: 20vh;
+    margin: 0vh 0 0 25%;
 }
+
+/* #input-group{
+    opacity: .7;
+} */
+
+#results{
+    margin:0vh 17% 0 -15%;
+    text-align: center;
+
+}
+
+
 
 @media (orientation:portrait){
     html, body{
         height: 100%;
       }
-      body { 
-                  background-image: url(../images/background-imageP.jpg) ;
-                  background-position: center center;
-                  background-repeat:  no-repeat;
-                  background-attachment: fixed;
-                  background-size:  cover;
-                  background-color: #999;
-        
+    body { 
+        background-image: url(../images/background-imageP.jpg) ;
+        background-position: center center;
+        background-repeat:  no-repeat;
+        background-attachment: fixed;
+        background-size:  cover;
+        background-color: #999;
       }
 }
