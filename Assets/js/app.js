@@ -47,13 +47,9 @@ const searchFunction = function (e) {
             //    console.log(res.events[i].start.timezone);
             if (`${catID}` === res.events[i].category_id) {
                 eventArray.push(res.events[i])
-
             }
-
         }
-
         console.log(eventArray);
-
         //   $('#id').append(`<div class="class"></div>`)
         console.log(city);
         console.log(catID);
@@ -85,10 +81,11 @@ const render = function () {
             content += `<p class="card-text">Please join us for this amazing event!</p>
                     <a href="${eventArray[i].url}" target="_blank" class="btn btn-primary">Buy Tickets!</a>`
         }
-        content += `</div>
+        content += `</br><a href="#" target="_blank" class="btn btn-primary">Find Hotel</a><a href="#" target="_blank" class="btn btn-primary">Find Food</a><a href="#" target="_blank" class="btn btn-primary">Find Nightlife</a></div>
         </div>`
     }
     $('#results').append(content);
+    getFoursquare();
 }
 
 //START DATE TESTING FOR NICK////START DATE TESTING FOR NICK//
@@ -130,7 +127,7 @@ const GoogleFunc = function () {
             //general GOOGLE Places URL//
             // url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/output?parameters`
             //proximity GOOGLE PlacesURL
-            url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=hotel&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:10000@${coords}&key=AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo`,
+            url: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coords}&radius=1500&type=restaurant&key=AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo`,
             method: 'GET'
         }).then(function (res) {
             //   for(var i = 0; i < res.events.length; i++){
@@ -177,20 +174,25 @@ const GoogleFunc = function () {
 }
 
 ///////FOURSQUARE
-// function getFoursquare(){
-//     var url = "https://api.foursquare.com/v2/venues/search?v=20161016&ll=34.0707998%2C%20-84.0554183&query=park&intent=browse&radius=2000&client_id=0ODJZDHLKB0H32NCNULADKFHVKHCVACX3DZJVYLPZYQYF4XO&client_secret=DKA4ZIWNG5QGLKGJ0LYJQKRIEZLRFEWOHERYXQGKF2FHFC0X";
-//     $.ajax({
-//       url: url,
-//       dataType: 'json',
-//       success: function(data){
-//         var venues = data.response.venues;
-//         $.each(venues, function(i,venue){
-//           $('p').append(venue.name + '<br />');
-//         });
-//       }
-//     });
-//   };
-  
-//   getFoursquare();
+function getFoursquare(){
+    const hotel = "4bf58dd8d48988d1fa931735";
+    const food = "4d4b7105d754a06374d81259";
+    const nightlife = "4d4b7105d754a06376d81259"
+    for (let i=0;i<eventArray.length;i++){
+    let coords = `${eventArray[i].venue.address.latitude},${eventArray[i].venue.address.longitude}`
+    var url = `https://api.foursquare.com/v2/venues/search?v=20161016&ll=${coords}&query=park&intent=browse&radius=16000&categoryId=${hotel}&limit=10&client_id=0ODJZDHLKB0H32NCNULADKFHVKHCVACX3DZJVYLPZYQYF4XO&client_secret=DKA4ZIWNG5QGLKGJ0LYJQKRIEZLRFEWOHERYXQGKF2FHFC0X`;
+    $.ajax({
+      url: url,
+      dataType: 'json',
+      success: function(data){
+        var venues = data.response.venues;
+        console.log(data);
+        $.each(venues, function(i,venue){
+        //   $('p').append(venue.name + '<br />');
+        });
+      }
+    });
+  };
+}
 
 $('#searchBtn').on('click', searchFunction);
