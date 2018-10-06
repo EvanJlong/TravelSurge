@@ -4,6 +4,8 @@ h1{
     color:white;
     font-size: 4rm;
     padding-top: 30px;
+    margin: 0vh 0 0 -5%;
+
 }
 
 html, body{
@@ -19,6 +21,13 @@ html, body{
     
   }
 
+  hr{
+    color: rgb(253, 252, 252);
+    background-color: rgb(252, 252, 252);
+    height: 5px;
+
+  }
+
 .menu-scroll {
     overflow-y: scroll;
     max-height: 300px;
@@ -27,6 +36,7 @@ html, body{
 .card-body{
     background-color: white;
     opacity: .7;
+
 }
 
 #formz{
@@ -34,16 +44,20 @@ html, body{
 }
 
 #main{
-    margin: 0vh 0 0 30%;
+    margin: 0vh 0 0 25%;
 }
 
 /* #input-group{
     opacity: .7;
 } */
 
-#dates{
-    
+#results{
+    margin:0vh 17% 0 -15%;
+    text-align: center;
+
 }
+
+
 
 @media (orientation:portrait){
     html, body{
