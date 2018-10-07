@@ -36,7 +36,15 @@ html, body{
 .card-body{
     background-color: white;
     opacity: .7;
+    overflow: hidden;
 
+}
+.card {
+    padding-top: 50px;
+}
+.card-text {
+    height: 150px;
+    overflow: hidden;
 }
 
 #formz{

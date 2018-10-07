@@ -83,6 +83,7 @@ const render = function () {
         }
         content += `</br><a href="#" target="_blank" class="btn btn-primary">Find Hotel</a><a href="#" target="_blank" class="btn btn-primary">Find Food</a><a href="#" target="_blank" class="btn btn-primary">Find Nightlife</a></div>
         </div>`
+        
     }
     $('#results').append(content);
     getFoursquare();
