@@ -87,6 +87,7 @@ const render = function () {
         }
         content += `</div>
         </div>`
+        
     }
     $('#results').append(content);
 }
