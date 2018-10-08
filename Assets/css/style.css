@@ -66,13 +66,23 @@ html, body{
     text-align: center;
     
 }
+#searchBtn {
+    margin-left:5px;
+}
+#inputState {
+    margin-left:5px;
+}
 
+#title {
+
+}
 
 
 #footer {
     position : fixed;
     bottom : 0;
-    height : 40px;
+    height : 25px;
+    text-align: center;
     /* margin-bottom : 1px; */
     /* position: sticky; */
 }
