@@ -64,6 +64,11 @@ html, body{
 #results{
     margin:0 auto;
     text-align: center;
+    
+}
+
+#headingHotel, #headingRest, #headingNightlife{
+    padding: 0;
 }
 
 @media (orientation:portrait){
