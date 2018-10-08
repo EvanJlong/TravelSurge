@@ -91,9 +91,12 @@ const render = function () {
         }
     }
     $('#results').append(content);
-        getFoursquare();
+    getFoursquareHotel();
+    getFoursquareFood();
+    getFoursquareNightlife();
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 $.ajax({
     url:`https://www.eventbriteapi.com/v3/events/search/?start_date.range_start=${startDate.local}&start_date.range_end=2018-10-11T19:00:00&expand=organizer,venue&token=${key}`,
@@ -193,31 +196,75 @@ const GoogleFunc = function () {
             // console.log(res);
             restArray.push(res);
             //    console.log(res.events[i].start.ti
+=======
+
+
+///////FOURSQUARE Hotels
+function getFoursquareHotel(){
+    const hotel = "4bf58dd8d48988d1fa931735";
+
+    for (let i=0;i<eventArray.length;i++){
+    let coords = `${eventArray[i].venue.address.latitude},${eventArray[i].venue.address.longitude}`
+    var url = `https://api.foursquare.com/v2/venues/search?v=20161016&ll=${coords}&query=park&intent=browse&radius=16000&categoryId=${hotel}&limit=10&client_id=0ODJZDHLKB0H32NCNULADKFHVKHCVACX3DZJVYLPZYQYF4XO&client_secret=DKA4ZIWNG5QGLKGJ0LYJQKRIEZLRFEWOHERYXQGKF2FHFC0X`;
+    
+    $.ajax({
+      url: url,
+      dataType: 'json',
+      success: function(data){
+        var venues = data.response.venues;
+        console.log(data);
+        $.each(venues, function(i,venue){
+        //   $('p').append(venue.name + '<br />');
+>>>>>>> d0ddb00d06f3f679a69c4f2abfecbc73c4688189
         });
-    }
-    console.log(restArray);
+      }
+    });
+  };
 }
 
-///////FOURSQUARE
-function getFoursquare() {
-    const hotel = "4bf58dd8d48988d1fa931735";
+///////FOURSQUARE Food
+function getFoursquareFood(){
     const food = "4d4b7105d754a06374d81259";
-    const nightlife = "4d4b7105d754a06376d81259"
-    for (let i = 0; i < eventArray.length; i++) {
-        let coords = `${eventArray[i].venue.address.latitude},${eventArray[i].venue.address.longitude}`
-        var url = `https://api.foursquare.com/v2/venues/search?v=20161016&ll=${coords}&query=park&intent=browse&radius=16000&categoryId=${hotel}&limit=10&client_id=0ODJZDHLKB0H32NCNULADKFHVKHCVACX3DZJVYLPZYQYF4XO&client_secret=DKA4ZIWNG5QGLKGJ0LYJQKRIEZLRFEWOHERYXQGKF2FHFC0X`;
-        $.ajax({
-            url: url,
-            dataType: 'json',
-            success: function (data) {
-                var venues = data.response.venues;
-                console.log(data);
-                $.each(venues, function (i, venue) {
-                    //   $('p').append(venue.name + '<br />');
-                });
-            }
+
+    for (let i=0;i<eventArray.length;i++){
+    let coords = `${eventArray[i].venue.address.latitude},${eventArray[i].venue.address.longitude}`
+    var url = `https://api.foursquare.com/v2/venues/search?v=20161016&ll=${coords}&query=park&intent=browse&radius=16000&categoryId=${food}&limit=10&client_id=0ODJZDHLKB0H32NCNULADKFHVKHCVACX3DZJVYLPZYQYF4XO&client_secret=DKA4ZIWNG5QGLKGJ0LYJQKRIEZLRFEWOHERYXQGKF2FHFC0X`;
+    
+    $.ajax({
+      url: url,
+      dataType: 'json',
+      success: function(data){
+        var venues = data.response.venues;
+        console.log(data);
+        $.each(venues, function(i,venue){
+        //   $('p').append(venue.name + '<br />');
         });
-    };
+      }
+    });
+  };
 }
+
+///////FOURSQUARE Nightlife
+function getFoursquareNightlife(){
+
+    const nightlife = "4d4b7105d754a06376d81259"
+    for (let i=0;i<eventArray.length;i++){
+    let coords = `${eventArray[i].venue.address.latitude},${eventArray[i].venue.address.longitude}`
+    var url = `https://api.foursquare.com/v2/venues/search?v=20161016&ll=${coords}&query=park&intent=browse&radius=16000&categoryId=${nightlife}&limit=10&client_id=0ODJZDHLKB0H32NCNULADKFHVKHCVACX3DZJVYLPZYQYF4XO&client_secret=DKA4ZIWNG5QGLKGJ0LYJQKRIEZLRFEWOHERYXQGKF2FHFC0X`;
+    
+    $.ajax({
+      url: url,
+      dataType: 'json',
+      success: function(data){
+        var venues = data.response.venues;
+        console.log(data);
+        $.each(venues, function(i,venue){
+        //   $('p').append(venue.name + '<br />');
+        });
+    }
+});
+    }
+}
+
 
 $('#searchBtn').on('click', searchFunction);
