@@ -41,10 +41,15 @@ html, body{
 .card {
     padding-top: 50px;
     background-color: rgba(253, 242, 242, .7);
+    margin-bottom: 5px;
 }
 .card-text {
     height: 150px;
     overflow: hidden;
+}
+
+.card-body{
+    margin-bottom: 5px;
 }
 
 #formz{
