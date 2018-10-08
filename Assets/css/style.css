@@ -67,6 +67,7 @@ html, body{
     
 }
 
+<<<<<<< HEAD
 
 
 #footer {
@@ -83,6 +84,9 @@ html, body{
 
 
 #headingHotel{
+=======
+#headingHotel, #headingRest, #headingNightlife{
+>>>>>>> master
     padding: 0;
 }
 
