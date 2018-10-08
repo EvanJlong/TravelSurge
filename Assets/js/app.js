@@ -97,6 +97,10 @@ const render = function () {
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
+<<<<<<< HEAD
 let startDate = {
     "timezone": "America/Los_Angeles",
     "utc": "2018-10-10T02:00:00Z",
@@ -226,7 +230,11 @@ function getFoursquareHotel(){
         console.log(data);
         $.each(venues, function(i,venue){
         //   $('p').append(venue.name + '<br />');
+<<<<<<< HEAD
 >>>>>>> 2768b154aa3a56b5752094adc783faeeda9a7af8
+=======
+>>>>>>> d0ddb00d06f3f679a69c4f2abfecbc73c4688189
+>>>>>>> master
         });
       }
     });
