@@ -63,7 +63,7 @@ const searchFunction = function (e) {
 }
 
 /////RENDER FUNCTION/////
-const render = function () {
+const render = function (element, animation) {
     let content = '';
     $('#results').empty();
     if (eventArray.length === 0) {
@@ -96,124 +96,6 @@ const render = function () {
     getFoursquareNightlife();
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
-<<<<<<< HEAD
-let startDate = {
-    "timezone": "America/Los_Angeles",
-    "utc": "2018-10-10T02:00:00Z",
-    "local": "2018-05-11T19:00:00"
-}
-
-
-$.ajax({
-    url:`https://www.eventbriteapi.com/v3/events/search/?start_date.range_start=${startDate.utc}&expand=organizer,venue&token=${key}`,
-    method: 'GET'
-}).then(function(response){
-
-    let date_sort_desc = function(a,b){
-    if ( a.startDate.utc > b.startDate.utc)return -1;
-    if ( a.startDate.utc < b.startDate.utc) return 1;
-    return 0;
-    };
-
-    console.log(date_sort_desc);
-})
-
-
-
-
-
- 
-//   table.setData("`https://www.eventbriteapi.com/v3/events/search/?location.address=Dallas&expand=organizer,venue&token=LBXLGGGLHCVTA6MUI2PB`,", {key1:"name"}, "GET");
-
-// function dropdownFunction() {
-//     var x = document.getElementById("mySelect").value;
-
-
-// let startDate = {
-//     "timezone": "America/Los_Angelas",
-//     "utc": "2018-05-12T02:00:00Z",
-//     "local": "2018-05-11T19:00:00"
-// }
-
-// $.ajax({
-//     url:`https://www.eventbriteapi.com/v3/events/search/?start_date.range_start=${startDate.timezone}&expand=organizer,venue&token=${key}`,
-//     method: 'GET'
-// }).then(function(response){
-//     console.log(response.startDate.timezone);
-// })
-//START DATE TESTING FOR NICK////START DATE TESTING FOR NICK//
-
-const GoogleFunc = function () {
-    let hotelArray = [];
-    for (let i = 0; i < eventArray.length; i++) {
-        let coords = eventArray[i].venue.address.latitude + ',' + eventArray[i].venue.address.longitude;
-        // console.log(coords);
-        // let logo = eventArray[i].logo.url;
-        // console.log(logo);
-        // let eventName = eventArray[i].name.text;
-        // console.log(eventName);
-        // let dt = eventArray[i].start.local;
-        // console.log(dt);
-        // let map = '';
-        // let link = eventArray[i].url;
-        // console.log(link);
-
-        ////////ATTEMPTED HTTP REQUEST
-        // var xhr = new XMLHttpRequest();
-        // xhr.open('GET', `https://people.googleapis.com/maps/api/place/findplacefromtext/json?input=hotel&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:10000@${coords}&key=AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo`);    
-
-        $.ajax({
-            //general GOOGLE Places URL//
-            // url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/output?parameters`
-            //proximity GOOGLE PlacesURL
-            url: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coords}&radius=1500&type=restaurant&key=AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo`,
-            method: 'GET'
-        }).then(function (res) {
-            //   for(var i = 0; i < res.events.length; i++){
-            // console.log(typeof(res.events[i].category_id));
-            // console.log(res);
-            hotelArray.push(res);
-            //    console.log(res.events[i].start.ti
-        });
-    }
-    console.log(hotelArray);
-    let restArray = [];
-    for (let i = 0; i < eventArray.length; i++) {
-        let coords = eventArray[i].venue.address.latitude + ',' + eventArray[i].venue.address.longitude;
-        // console.log(coords);
-        // let logo = eventArray[i].logo.url;
-        // console.log(logo);
-        // let eventName = eventArray[i].name.text;
-        // console.log(eventName);
-        // let dt = eventArray[i].start.local;
-        // console.log(dt);
-        // let map = '';
-        // let link = eventArray[i].url;
-        // console.log(link);
-
-        ////////ATTEMPTED HTTP REQUEST
-        // var xhr = new XMLHttpRequest();
-        // xhr.open('GET', `https://people.googleapis.com/maps/api/place/findplacefromtext/json?input=hotel&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:10000@${coords}&key=AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo`);    
-
-        $.ajax({
-            //general GOOGLE Places URL//
-            // url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/output?parameters`
-            //proximity GOOGLE PlacesURL
-            url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=restaurant&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:10000@${coords}&key=AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo`,
-            method: 'GET'
-        }).then(function (res) {
-            //   for(var i = 0; i < res.events.length; i++){
-            // console.log(typeof(res.events[i].category_id));
-            // console.log(res);
-            restArray.push(res);
-            //    console.log(res.events[i].start.ti
-=======
-
-
 ///////FOURSQUARE Hotels
 function getFoursquareHotel(){
     const hotel = "4bf58dd8d48988d1fa931735";
@@ -228,13 +110,8 @@ function getFoursquareHotel(){
       success: function(data){
         var venues = data.response.venues;
         console.log(data);
-        $.each(venues, function(i,venue){
-        //   $('p').append(venue.name + '<br />');
-<<<<<<< HEAD
->>>>>>> 2768b154aa3a56b5752094adc783faeeda9a7af8
-=======
->>>>>>> d0ddb00d06f3f679a69c4f2abfecbc73c4688189
->>>>>>> master
+        $.each(venues, function(i,venues){
+           $('p').append(venues.name + response.venues.location +'<br />');
         });
       }
     });
@@ -256,7 +133,7 @@ function getFoursquareFood(){
         var venues = data.response.venues;
         console.log(data);
         $.each(venues, function(i,venue){
-        //   $('p').append(venue.name + '<br />');
+           $('p').append(venue.name + response.venues.location + '<br />');
         });
       }
     });
@@ -278,12 +155,16 @@ function getFoursquareNightlife(){
         var venues = data.response.venues;
         console.log(data);
         $.each(venues, function(i,venue){
-        //   $('p').append(venue.name + '<br />');
+           $('p').append(venue.name + response.venues.location + '<br />');
         });
     }
 });
     }
 }
+
+// function animate(element, animation) {
+
+// }
 
 
 $('#searchBtn').on('click', searchFunction);
