@@ -155,7 +155,7 @@ function getFoursquareHotel(){
         var venues = data.response.venues;
         console.log(data);
         $.each(venues, function(i,venues){
-           $('p').append(venues.name + response.venues.location +'<br />');
+          $('#hotelData${i}').innerHTML(venues.name +'<br />');
         });
       }
     });
@@ -177,7 +177,7 @@ function getFoursquareFood(){
         var venues = data.response.venues;
         console.log(data);
         $.each(venues, function(i,venue){
-           $('p').append(venue.name + response.venues.location + '<br />');
+           $('#restaurantData${i}').innerHTML(venue.name + '<br />');
         });
       }
     });
@@ -199,7 +199,7 @@ function getFoursquareNightlife(){
         var venues = data.response.venues;
         console.log(data);
         $.each(venues, function(i,venue){
-           $('p').append(venue.name + response.venues.location + '<br />');
+           $('#card-body nightlifeData${i}').innerHTML(venue.name + '<br />');
         });
     }
 });
