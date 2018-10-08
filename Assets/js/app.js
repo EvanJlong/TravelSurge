@@ -61,22 +61,23 @@ const searchFunction = function (e) {
         render();
     });
 }
-
 /////RENDER FUNCTION/////
+
+
 const render = function () {
     let content = '';
     $('#results').empty();
     if (eventArray.length === 0) {
-        content = `<div class="row">
-        <div class="card-body col-12"><h5>No Results Found</h5></div></div>`;
+        content = `<div class="row animated slideInLeft">
+        <div class="card-body col-12 animated slideInLeft"><h5>No Results Found</h5></div></div>`;
     }
     else {
         for (let i = 0; i < eventArray.length; i++) {
-            content += `<div class="row">
-            <div class="card col-4">
+            content += `<div class="row animate slideInLeft">
+            <div class="card col-6 animated slideInLeft">
             <a href="${eventArray[i].url}" target="_blank"> <img class="card-img-top" src="${eventArray[i].logo.url}" alt="Card image"></a>
             </div>
-            <div class="card-body col-4" id="results-body">
+            <div class="card-body col-6 animated slideInLeft" id="results-body">
                 <h5 class="card-title">${eventArray[i].name.text}</h5>`;
             if (eventArray[i].description.text !== null) {
                 content += `<p class="card-text">${eventArray[i].description.text}</p>
@@ -207,6 +208,10 @@ function getFoursquareNightlife(){
 });
     }
 }
+
+// function animate(element, animation) {
+
+// }
 
 
 $('#searchBtn').on('click', searchFunction);
