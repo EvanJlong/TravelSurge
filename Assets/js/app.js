@@ -91,12 +91,25 @@ const render = function () {
     $('#results').append(content);
 }
 
-<<<<<<< HEAD
+let startDate = {
+    "timezone": "America/Los_Angeles",
+    "utc": "2018-10-10T02:00:00Z",
+    "local": "2018-05-11T19:00:00"
+}
+
+
 $.ajax({
-    url:`https://www.eventbriteapi.com/v3/events/search/?start_date.range_start=${startDate.local}&start_date.range_end=2018-10-11T19:00:00&expand=organizer,venue&token=${key}`,
+    url:`https://www.eventbriteapi.com/v3/events/search/?start_date.range_start=${startDate.utc}&expand=organizer,venue&token=${key}`,
     method: 'GET'
 }).then(function(response){
-    console.log(response);
+
+    let date_sort_desc = function(a,b){
+    if ( a.startDate.utc > b.startDate.utc)return -1;
+    if ( a.startDate.utc < b.startDate.utc) return 1;
+    return 0;
+    };
+
+    console.log(date_sort_desc);
 })
 
 
@@ -108,9 +121,7 @@ $.ajax({
 
 // function dropdownFunction() {
 //     var x = document.getElementById("mySelect").value;
-=======
-//START DATE TESTING FOR NICK////START DATE TESTING FOR NICK//
->>>>>>> db9fbbcc2a147a649c190a28fc9a5c319c044279
+
 
 // let startDate = {
 //     "timezone": "America/Los_Angelas",
