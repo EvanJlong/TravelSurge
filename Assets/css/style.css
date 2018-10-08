@@ -67,7 +67,8 @@ html, body{
     
 }
 
-<<<<<<< HEAD
+
+
 #footer {
     position : relative;
     bottom : 0;
@@ -78,8 +79,14 @@ html, body{
 
 
 
-=======
->>>>>>> master
+
+
+
+#headingHotel{
+    padding: 0;
+}
+
+
 @media (orientation:portrait){
     html, body{
         height: 100%;
