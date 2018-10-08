@@ -57,7 +57,11 @@ const searchFunction = function (e) {
         $('#cityForm').empty();
         $("#inputState").val();
         // $("select#inputState").change(resetFieldToDefault);
+<<<<<<< HEAD
+        // GoogleFunc();
+=======
         
+>>>>>>> 2768b154aa3a56b5752094adc783faeeda9a7af8
         render();
     });
 }
@@ -80,7 +84,7 @@ const render = function () {
                 <h5 class="card-title">${eventArray[i].name.text}</h5>`;
             if (eventArray[i].description.text !== null) {
                 content += `<p class="card-text">${eventArray[i].description.text}</p>
-                    <a href="${eventArray[i].url}" target="_blank" class="btn btn-primary">Buy Tickets!</a>`
+                    <a href="${eventArray[i].url}" target="_blank" class="dynamic btn btn-primary">Buy Tickets!</a><a href="./results.html}" class="dynamic btn btn-primary">Nearby Interests</a>`
             }
             else {
                 content += `<p class="card-text">Please join us for this amazing event!</p>
