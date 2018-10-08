@@ -5,7 +5,6 @@ const key = 'LBXLGGGLHCVTA6MUI2PB';
 // const placesKey3 = 'AIzaSyDliDoQC8OLbasGSdT_p5C55583bJ4q1eo';
 const placesKeypaid = 'AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo'
 
-
 //////////////this populates the category array//////////////
 categoryArray = [];
 $.ajax({
@@ -48,13 +47,9 @@ const searchFunction = function (e) {
             //    console.log(res.events[i].start.timezone);
             if (`${catID}` === res.events[i].category_id) {
                 eventArray.push(res.events[i])
-
             }
-
         }
-
         console.log(eventArray);
-
         //   $('#id').append(`<div class="class"></div>`)
         console.log(city);
         console.log(catID);
@@ -71,25 +66,32 @@ const searchFunction = function (e) {
 const render = function () {
     let content = '';
     $('#results').empty();
-    for (let i = 0; i < eventArray.length; i++) {
-        content += `<div class="row">
+    if (eventArray.length === 0) {
+        content = `<div class="row">
+        <div class="card-body col-12"><h5>No Results Found</h5></div></div>`;
+    }
+    else {
+        for (let i = 0; i < eventArray.length; i++) {
+            content += `<div class="row">
             <div class="card col-6">
             <a href="${eventArray[i].url}" target="_blank"> <img class="card-img-top" src="${eventArray[i].logo.url}" alt="Card image"></a>
             </div>
             <div class="card-body col-6" id="results-body">
                 <h5 class="card-title">${eventArray[i].name.text}</h5>`;
-                if(eventArray[i].description.text !== null){
-                    content += `<p class="card-text">${eventArray[i].description.text}</p>
+            if (eventArray[i].description.text !== null) {
+                content += `<p class="card-text">${eventArray[i].description.text}</p>
                     <a href="${eventArray[i].url}" target="_blank" class="btn btn-primary">Buy Tickets!</a>`
-                }
-                else{
-                    content += `<p class="card-text">Please join us for this amazing event!</p>
+            }
+            else {
+                content += `<p class="card-text">Please join us for this amazing event!</p>
                     <a href="${eventArray[i].url}" target="_blank" class="btn btn-primary">Buy Tickets!</a>`
-                }
+            }
             content += `</div>
         </div>`
+        }
     }
     $('#results').append(content);
+        getFoursquare();
 }
 
 //START DATE TESTING FOR NICK////START DATE TESTING FOR NICK//
@@ -109,34 +111,94 @@ const render = function () {
 //START DATE TESTING FOR NICK////START DATE TESTING FOR NICK//
 
 const GoogleFunc = function () {
+    let hotelArray = [];
     for (let i = 0; i < eventArray.length; i++) {
         let coords = eventArray[i].venue.address.latitude + ',' + eventArray[i].venue.address.longitude;
-        console.log(coords);
-        let logo = eventArray[i].logo.url;
-        console.log(logo);
-        let eventName = eventArray[i].name.text;
-        console.log(eventName);
-        let dt = eventArray[i].start.local;
-        console.log(dt);
-        let map = '';
-        let link = eventArray[i].url;
-        console.log(link);
+        // console.log(coords);
+        // let logo = eventArray[i].logo.url;
+        // console.log(logo);
+        // let eventName = eventArray[i].name.text;
+        // console.log(eventName);
+        // let dt = eventArray[i].start.local;
+        // console.log(dt);
+        // let map = '';
+        // let link = eventArray[i].url;
+        // console.log(link);
+
+        ////////ATTEMPTED HTTP REQUEST
+        // var xhr = new XMLHttpRequest();
+        // xhr.open('GET', `https://people.googleapis.com/maps/api/place/findplacefromtext/json?input=hotel&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:10000@${coords}&key=AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo`);    
+
         $.ajax({
             //general GOOGLE Places URL//
             // url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/output?parameters`
-
             //proximity GOOGLE PlacesURL
-            url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=hotel&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:10000@${coords}&key=AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo`,
-
+            url: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coords}&radius=1500&type=restaurant&key=AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo`,
             method: 'GET'
         }).then(function (res) {
             //   for(var i = 0; i < res.events.length; i++){
             // console.log(typeof(res.events[i].category_id));
-            console.log(res);
+            // console.log(res);
+            hotelArray.push(res);
             //    console.log(res.events[i].start.ti
         });
-
     }
+    console.log(hotelArray);
+    let restArray = [];
+    for (let i = 0; i < eventArray.length; i++) {
+        let coords = eventArray[i].venue.address.latitude + ',' + eventArray[i].venue.address.longitude;
+        // console.log(coords);
+        // let logo = eventArray[i].logo.url;
+        // console.log(logo);
+        // let eventName = eventArray[i].name.text;
+        // console.log(eventName);
+        // let dt = eventArray[i].start.local;
+        // console.log(dt);
+        // let map = '';
+        // let link = eventArray[i].url;
+        // console.log(link);
+
+        ////////ATTEMPTED HTTP REQUEST
+        // var xhr = new XMLHttpRequest();
+        // xhr.open('GET', `https://people.googleapis.com/maps/api/place/findplacefromtext/json?input=hotel&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:10000@${coords}&key=AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo`);    
+
+        $.ajax({
+            //general GOOGLE Places URL//
+            // url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/output?parameters`
+            //proximity GOOGLE PlacesURL
+            url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=restaurant&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:10000@${coords}&key=AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo`,
+            method: 'GET'
+        }).then(function (res) {
+            //   for(var i = 0; i < res.events.length; i++){
+            // console.log(typeof(res.events[i].category_id));
+            // console.log(res);
+            restArray.push(res);
+            //    console.log(res.events[i].start.ti
+        });
+    }
+    console.log(restArray);
+}
+
+///////FOURSQUARE
+function getFoursquare() {
+    const hotel = "4bf58dd8d48988d1fa931735";
+    const food = "4d4b7105d754a06374d81259";
+    const nightlife = "4d4b7105d754a06376d81259"
+    for (let i = 0; i < eventArray.length; i++) {
+        let coords = `${eventArray[i].venue.address.latitude},${eventArray[i].venue.address.longitude}`
+        var url = `https://api.foursquare.com/v2/venues/search?v=20161016&ll=${coords}&query=park&intent=browse&radius=16000&categoryId=${hotel}&limit=10&client_id=0ODJZDHLKB0H32NCNULADKFHVKHCVACX3DZJVYLPZYQYF4XO&client_secret=DKA4ZIWNG5QGLKGJ0LYJQKRIEZLRFEWOHERYXQGKF2FHFC0X`;
+        $.ajax({
+            url: url,
+            dataType: 'json',
+            success: function (data) {
+                var venues = data.response.venues;
+                console.log(data);
+                $.each(venues, function (i, venue) {
+                    //   $('p').append(venue.name + '<br />');
+                });
+            }
+        });
+    };
 }
 
 $('#searchBtn').on('click', searchFunction);

@@ -2,7 +2,7 @@ h1{
     font-family: 'Oswald', Arial, Helvetica, sans-serif;
     text-align:center;
     color:white;
-    font-size: 4rm;
+    font-size: 4rem;
     padding-top: 30px;
     margin: 0vh 0 0 -5%;
 
@@ -34,9 +34,22 @@ html, body{
 }
 
 .card-body{
-    background-color: white;
-    opacity: .7;
+    background-color: rgba(253, 242, 242, .7);
+    overflow: hidden;
 
+}
+.card {
+    padding-top: 50px;
+    background-color: rgba(253, 242, 242, .7);
+    margin-bottom: 5px;
+}
+.card-text {
+    height: 150px;
+    overflow: hidden;
+}
+
+.card-body{
+    margin-bottom: 5px;
 }
 
 #formz{
