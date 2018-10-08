@@ -57,7 +57,11 @@ const searchFunction = function (e) {
         $('#cityForm').empty();
         $("#inputState").val();
         // $("select#inputState").change(resetFieldToDefault);
+<<<<<<< HEAD
         // GoogleFunc();
+=======
+        
+>>>>>>> 2768b154aa3a56b5752094adc783faeeda9a7af8
         render();
     });
 }
