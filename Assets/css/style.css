@@ -62,9 +62,8 @@ html, body{
 }
 
 #results{
-    margin:0vh 17% 0 -15%;
+    margin:0 auto;
     text-align: center;
-
 }
 
 @media (orientation:portrait){
