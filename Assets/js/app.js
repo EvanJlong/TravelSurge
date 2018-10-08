@@ -3,7 +3,8 @@ const key = 'LBXLGGGLHCVTA6MUI2PB';
 // const placesKey = 'AIzaSyDW1KtYBTG9atRt_8QhxWi2GhO6uSBrzs0';
 // const placesKey2 = 'AIzaSyCWWEVzZHQvwp5dhHJMTaDRVnATsYWKGXY';
 // const placesKey3 = 'AIzaSyDliDoQC8OLbasGSdT_p5C55583bJ4q1eo';
-const placesKeypaid = 'AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo'
+const placesKeypaid = 'AIzaSyCSYp0PROxz6148kSPkdUSJZj61kwy3Quo';
+let counter = 0;
 
 //////////////this populates the category array//////////////
 categoryArray = [];
@@ -32,6 +33,7 @@ let eventArray = [];
 
 const searchFunction = function (e) {
     e.preventDefault();
+    counter = 0;
     const city = $('#cityForm').val().trim();
     // let city = prompt("asdf");
     eventArray = [];
@@ -62,13 +64,9 @@ const searchFunction = function (e) {
     });
 }
 /////RENDER FUNCTION/////
-<<<<<<< HEAD
-const render = function (element, animation) {
-=======
 
 
 const render = function () {
->>>>>>> 306085eb550097ce2a23d0a27e73d11556ef7beb
     let content = '';
     $('#results').empty();
     if (eventArray.length === 0) {
@@ -130,7 +128,7 @@ const render = function () {
                 </h5>
               </div>
               <div id="collapseNightlife" class="collapse" aria-labelledby="headingNightlife" data-parent="#nearby">
-                <div class="card-body nightlifeData${i}">
+                <div class="card-body" id="nightlifeData${i}">
                   
                 </div>
               </div>
@@ -151,7 +149,7 @@ function getFoursquareHotel(){
 
     for (let i=0;i<eventArray.length;i++){
     let coords = `${eventArray[i].venue.address.latitude},${eventArray[i].venue.address.longitude}`
-    var url = `https://api.foursquare.com/v2/venues/search?v=20161016&ll=${coords}&query=park&intent=browse&radius=16000&categoryId=${hotel}&limit=10&client_id=0ODJZDHLKB0H32NCNULADKFHVKHCVACX3DZJVYLPZYQYF4XO&client_secret=DKA4ZIWNG5QGLKGJ0LYJQKRIEZLRFEWOHERYXQGKF2FHFC0X`;
+    var url = `https://api.foursquare.com/v2/venues/search?v=20161016&ll=${coords}&query=park&intent=browse&radius=16000&categoryId=${hotel}&limit=5&client_id=0ODJZDHLKB0H32NCNULADKFHVKHCVACX3DZJVYLPZYQYF4XO&client_secret=DKA4ZIWNG5QGLKGJ0LYJQKRIEZLRFEWOHERYXQGKF2FHFC0X`;
     
     $.ajax({
       url: url,
@@ -160,11 +158,13 @@ function getFoursquareHotel(){
         var venues = data.response.venues;
         console.log(data);
         $.each(venues, function(i,venues){
-          $('#hotelData${i}').innerHTML(venues.name +'<br />');
+            nightLite+=`<a href= '${venues.url}'><h5>${venues.name}<h5></a>`;
         });
+        $("hotelData${counter}").html(nightLite);
       }
     });
   };
+  counter++;
 }
 
 ///////FOURSQUARE Food
@@ -173,7 +173,7 @@ function getFoursquareFood(){
 
     for (let i=0;i<eventArray.length;i++){
     let coords = `${eventArray[i].venue.address.latitude},${eventArray[i].venue.address.longitude}`
-    var url = `https://api.foursquare.com/v2/venues/search?v=20161016&ll=${coords}&query=park&intent=browse&radius=16000&categoryId=${food}&limit=10&client_id=0ODJZDHLKB0H32NCNULADKFHVKHCVACX3DZJVYLPZYQYF4XO&client_secret=DKA4ZIWNG5QGLKGJ0LYJQKRIEZLRFEWOHERYXQGKF2FHFC0X`;
+    var url = `https://api.foursquare.com/v2/venues/search?v=20161016&ll=${coords}&query=park&intent=browse&radius=16000&categoryId=${food}&limit=5&client_id=0ODJZDHLKB0H32NCNULADKFHVKHCVACX3DZJVYLPZYQYF4XO&client_secret=DKA4ZIWNG5QGLKGJ0LYJQKRIEZLRFEWOHERYXQGKF2FHFC0X`;
     
     $.ajax({
       url: url,
@@ -182,20 +182,25 @@ function getFoursquareFood(){
         var venues = data.response.venues;
         console.log(data);
         $.each(venues, function(i,venue){
-           $('#restaurantData${i}').innerHTML(venue.name + '<br />');
+            nightLite+=`<a href= '${venues.url}'><h5>${venues.name}<h5></a>`;
         });
+        $("restaurantData${counter}").html(nightLite);
       }
     });
   };
+  counter++;
 }
 
 ///////FOURSQUARE Nightlife
 function getFoursquareNightlife(){
 
+    let nightLite='';
+
+
     const nightlife = "4d4b7105d754a06376d81259"
     for (let i=0;i<eventArray.length;i++){
     let coords = `${eventArray[i].venue.address.latitude},${eventArray[i].venue.address.longitude}`
-    var url = `https://api.foursquare.com/v2/venues/search?v=20161016&ll=${coords}&query=park&intent=browse&radius=16000&categoryId=${nightlife}&limit=10&client_id=0ODJZDHLKB0H32NCNULADKFHVKHCVACX3DZJVYLPZYQYF4XO&client_secret=DKA4ZIWNG5QGLKGJ0LYJQKRIEZLRFEWOHERYXQGKF2FHFC0X`;
+    var url = `https://api.foursquare.com/v2/venues/search?v=20161016&ll=${coords}&query=park&intent=browse&radius=16000&categoryId=${nightlife}&limit=5&client_id=0ODJZDHLKB0H32NCNULADKFHVKHCVACX3DZJVYLPZYQYF4XO&client_secret=DKA4ZIWNG5QGLKGJ0LYJQKRIEZLRFEWOHERYXQGKF2FHFC0X`;
     
     $.ajax({
       url: url,
@@ -204,11 +209,15 @@ function getFoursquareNightlife(){
         var venues = data.response.venues;
         console.log(data);
         $.each(venues, function(i,venue){
-           $('#card-body nightlifeData${i}').innerHTML(venue.name + '<br />');
+           nightLite+=`<a href= '${venues.url}'><h5>${venues.name}<h5></a>`;
+          
+           
         });
+        $("#nightlifeData${counter}").html(nightLite);
     }
 });
     }
+    counter++;
 }
 
 // function animate(element, animation) {
