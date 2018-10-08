@@ -67,7 +67,7 @@ html, body{
     
 }
 
-#headingHotel{
+#headingHotel, #headingRest, #headingNightlife{
     padding: 0;
 }
 
