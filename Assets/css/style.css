@@ -66,6 +66,10 @@ html, body{
     text-align: center;
 }
 
+#headingHotel{
+    padding: 0;
+}
+
 @media (orientation:portrait){
     html, body{
         height: 100%;
