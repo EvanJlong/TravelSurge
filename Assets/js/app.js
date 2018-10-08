@@ -66,27 +66,32 @@ const searchFunction = function (e) {
 const render = function () {
     let content = '';
     $('#results').empty();
-    for (let i = 0; i < eventArray.length; i++) {
-        content += `<div class="row">
+    if (eventArray.length === 0) {
+        content = `<div class="row">
+        <div class="card-body col-12"><h5>No Results Found</h5></div></div>`;
+    }
+    else {
+        for (let i = 0; i < eventArray.length; i++) {
+            content += `<div class="row">
             <div class="card col-6">
             <a href="${eventArray[i].url}" target="_blank"> <img class="card-img-top" src="${eventArray[i].logo.url}" alt="Card image"></a>
             </div>
             <div class="card-body col-6" id="results-body">
                 <h5 class="card-title">${eventArray[i].name.text}</h5>`;
-        if (eventArray[i].description.text !== null) {
-            content += `<p class="card-text">${eventArray[i].description.text}</p>
+            if (eventArray[i].description.text !== null) {
+                content += `<p class="card-text">${eventArray[i].description.text}</p>
                     <a href="${eventArray[i].url}" target="_blank" class="btn btn-primary">Buy Tickets!</a>`
-        }
-        else {
-            content += `<p class="card-text">Please join us for this amazing event!</p>
+            }
+            else {
+                content += `<p class="card-text">Please join us for this amazing event!</p>
                     <a href="${eventArray[i].url}" target="_blank" class="btn btn-primary">Buy Tickets!</a>`
-        }
-        content += `</div>
+            }
+            content += `</div>
         </div>`
-        
+        }
     }
     $('#results').append(content);
-    getFoursquare();
+        getFoursquare();
 }
 
 let startDate = {
@@ -201,29 +206,29 @@ const GoogleFunc = function () {
             //    console.log(res.events[i].start.ti
         });
     }
-    console.log(restArray);    
+    console.log(restArray);
 }
 
 ///////FOURSQUARE
-function getFoursquare(){
+function getFoursquare() {
     const hotel = "4bf58dd8d48988d1fa931735";
     const food = "4d4b7105d754a06374d81259";
     const nightlife = "4d4b7105d754a06376d81259"
-    for (let i=0;i<eventArray.length;i++){
-    let coords = `${eventArray[i].venue.address.latitude},${eventArray[i].venue.address.longitude}`
-    var url = `https://api.foursquare.com/v2/venues/search?v=20161016&ll=${coords}&query=park&intent=browse&radius=16000&categoryId=${hotel}&limit=10&client_id=0ODJZDHLKB0H32NCNULADKFHVKHCVACX3DZJVYLPZYQYF4XO&client_secret=DKA4ZIWNG5QGLKGJ0LYJQKRIEZLRFEWOHERYXQGKF2FHFC0X`;
-    $.ajax({
-      url: url,
-      dataType: 'json',
-      success: function(data){
-        var venues = data.response.venues;
-        console.log(data);
-        $.each(venues, function(i,venue){
-        //   $('p').append(venue.name + '<br />');
+    for (let i = 0; i < eventArray.length; i++) {
+        let coords = `${eventArray[i].venue.address.latitude},${eventArray[i].venue.address.longitude}`
+        var url = `https://api.foursquare.com/v2/venues/search?v=20161016&ll=${coords}&query=park&intent=browse&radius=16000&categoryId=${hotel}&limit=10&client_id=0ODJZDHLKB0H32NCNULADKFHVKHCVACX3DZJVYLPZYQYF4XO&client_secret=DKA4ZIWNG5QGLKGJ0LYJQKRIEZLRFEWOHERYXQGKF2FHFC0X`;
+        $.ajax({
+            url: url,
+            dataType: 'json',
+            success: function (data) {
+                var venues = data.response.venues;
+                console.log(data);
+                $.each(venues, function (i, venue) {
+                    //   $('p').append(venue.name + '<br />');
+                });
+            }
         });
-      }
-    });
-  };
+    };
 }
 
 $('#searchBtn').on('click', searchFunction);
