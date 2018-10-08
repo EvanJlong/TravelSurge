@@ -81,7 +81,7 @@ const render = function () {
             content += `<p class="card-text">Please join us for this amazing event!</p>
                     <a href="${eventArray[i].url}" target="_blank" class="btn btn-primary">Buy Tickets!</a>`
         }
-        content += `</br><a href="#" target="_blank" class="btn btn-primary">Find Hotel</a><a href="#" target="_blank" class="btn btn-primary">Find Food</a><a href="#" target="_blank" class="btn btn-primary">Find Nightlife</a></div>
+        content += `</div>
         </div>`
         
     }
