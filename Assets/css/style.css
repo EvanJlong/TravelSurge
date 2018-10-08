@@ -17,15 +17,13 @@ html, body{
     background-repeat:  no-repeat;
     background-attachment: fixed;
     background-size:  cover;
-    background-color: #999;
-    
+    background-color: #999; 
   }
 
   hr{
     color: rgb(253, 252, 252);
     background-color: rgb(252, 252, 252);
     height: 5px;
-
   }
 
 .menu-scroll {
@@ -36,7 +34,6 @@ html, body{
 .card-body{
     background-color: rgba(253, 242, 242, .7);
     overflow: hidden;
-
 }
 .card {
     padding-top: 50px;
@@ -52,6 +49,10 @@ html, body{
     margin-bottom: 5px;
 }
 
+.dynamic{
+    margin: 0 auto;
+}
+
 #formz{
     padding: 30px;
 }
@@ -60,17 +61,11 @@ html, body{
     margin: 0vh 0 0 25%;
 }
 
-/* #input-group{
-    opacity: .7;
-} */
-
 #results{
     margin:0vh 17% 0 -15%;
     text-align: center;
 
 }
-
-
 
 @media (orientation:portrait){
     html, body{
