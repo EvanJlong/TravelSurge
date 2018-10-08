@@ -67,26 +67,14 @@ html, body{
     
 }
 
-<<<<<<< HEAD
-
-
 #footer {
-    position : relative;
+    position : fixed;
     bottom : 0;
     height : 40px;
-    margin-bottom : 40px;
+    /* margin-bottom : 40px; */
     /* position: sticky; */
 }
-
-
-
-
-
-
-#headingHotel{
-=======
 #headingHotel, #headingRest, #headingNightlife{
->>>>>>> master
     padding: 0;
 }
 
