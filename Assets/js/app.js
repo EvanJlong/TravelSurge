@@ -73,20 +73,64 @@ const render = function () {
     else {
         for (let i = 0; i < eventArray.length; i++) {
             content += `<div class="row">
-            <div class="card col-6">
+            <div class="card col-4">
             <a href="${eventArray[i].url}" target="_blank"> <img class="card-img-top" src="${eventArray[i].logo.url}" alt="Card image"></a>
             </div>
-            <div class="card-body col-6" id="results-body">
+            <div class="card-body col-4" id="results-body">
                 <h5 class="card-title">${eventArray[i].name.text}</h5>`;
             if (eventArray[i].description.text !== null) {
                 content += `<p class="card-text">${eventArray[i].description.text}</p>
-                    <a href="${eventArray[i].url}" target="_blank" class="btn btn-primary">Buy Tickets!</a>`
+                    <a href="${eventArray[i].url}" target="_blank" class="dynamic btn btn-primary">Buy Tickets!</a><a href="./results.html}" class="dynamic btn btn-primary">Nearby Interests</a>`
             }
             else {
                 content += `<p class="card-text">Please join us for this amazing event!</p>
                     <a href="${eventArray[i].url}" target="_blank" class="btn btn-primary">Buy Tickets!</a>`
             }
-            content += `</div>
+            content += `</div><div class="accordion col-4" id="nearby">
+            <div class="card">
+              <div class="card-header" id="headingHotel">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseHotel" aria-expanded="false" aria-controls="collapseHotel">
+                    Nearby Hotels
+                  </button>
+                </h5>
+              </div>
+          
+              <div id="collapseHotel" class="collapse show" aria-labelledby="headingHotel" data-parent="#nearby">
+                <div class="card-body" id="hotelData${i}">
+                  
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingRest">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseRest" aria-expanded="false" aria-controls="collapseRest">
+                    Nearby Restaurants
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseRest" class="collapse" aria-labelledby="headingRest" data-parent="#nearby">
+                <div class="card-body" id="restaurantData${i}">
+                  
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingNightlife">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseNightlife" aria-expanded="false" aria-controls="collapseNightlife">
+                    Nearby Nightlife
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseNightlife" class="collapse" aria-labelledby="headingNightlife" data-parent="#nearby">
+                <div class="card-body nightlifeData${i}">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
         </div>`
         }
     }
