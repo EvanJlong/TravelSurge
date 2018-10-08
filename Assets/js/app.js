@@ -87,7 +87,7 @@ const render = function () {
                 content += `<p class="card-text">Please join us for this amazing event!</p>
                     <a href="${eventArray[i].url}" target="_blank" class="btn btn-primary">Buy Tickets!</a>`
             }
-            content += `</div><div class="accordion col-4" id="nearby">
+            content += `</div><div class="accordion col-4 animated slideInLeft" id="nearby">
             <div class="card">
               <div class="card-header" id="headingHotel">
                 <h5 class="mb-0">
