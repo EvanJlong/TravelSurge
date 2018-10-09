@@ -117,6 +117,7 @@ html, body{
     h1 {
         padding-top: 5px;
         margin: 0vh 0 0 0%;
+        font-size: 40px;
     }
     .card-body{
         margin-bottom: 2px;

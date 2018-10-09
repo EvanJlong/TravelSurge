@@ -152,7 +152,7 @@ const render = function () {
       for (let j=0;j<5;j++){
         $(`#hotelData${i}`).append(`<p>${hotelArray[counter]}</p>`);
         $(`#restaurantData${i}`).append(`<p>${restaurantArray[counter]}</p>`);
-        $(`#nightlifeData${i}`).append(`<p>${nightlifeArray[counter]}</p>`);
+        $(`#nightlifeData${i}`).append(`<p>${nightlifeArray[counter]}</p> + <hr>`);
         counter++;
       }
     }
