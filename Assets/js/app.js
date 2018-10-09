@@ -103,7 +103,7 @@ const render = function () {
                 </h5>
               </div>
           
-              <div id="collapseHotel${i}" class="collapse " aria-labelledby="headingHotel" data-parent="#nearby">
+              <div id="collapseHotel${i}" class="collapse show" aria-labelledby="headingHotel" data-parent="#nearby">
                 <div class="card-body" id="hotelData${i}">
                   
                 </div>
