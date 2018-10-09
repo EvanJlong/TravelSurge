@@ -58,6 +58,8 @@ html, body{
 
 #main{
     margin:auto;
+    display: block;
+
 }
 
 #results{
@@ -80,7 +82,11 @@ html, body{
     /* margin-bottom : 1px; */
     /* position: sticky; */
 }
+#footer {
 
+    text-align: center;
+
+}
 
 #headingHotel, #headingRest, #headingNightlife{
     padding: 0;
@@ -101,9 +107,11 @@ html, body{
         background-size:  cover;
         background-color: #999;
       }
-}
-/* // Extra small devices (portrait phones, less than 576px)
-@media (max-width: 575px) { ... }
+    }
 
-// Small devices (landscape phones, less than 768px)
-@media (max-width: 767px) { ... } */
+
+@media (max-width: 767px) { 
+    .card-text {
+        display: none;
+    }
+ }
