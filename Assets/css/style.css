@@ -35,9 +35,9 @@ html, body{
     overflow: hidden;
 }
 .card {
-    padding-top: 5px;
+    padding-top: 2px;
     background-color: rgba(253, 242, 242, .7);
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 .card-text {
     height: 150px;
@@ -45,7 +45,7 @@ html, body{
 }
 
 .card-body{
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 
 .dynamic{
@@ -114,4 +114,16 @@ html, body{
     .card-text {
         display: none;
     }
+    h1 {
+        padding-top: 5px;
+        margin: 0vh 0 0 0%;
+    }
+    .card-body{
+        margin-bottom: 2px;
+        padding: 2px;
+    }
+    .col-12, .col-md-4 {
+    padding-right: 5px;
+    padding-left: 5px;
+}
  }
