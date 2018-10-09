@@ -145,14 +145,14 @@ const render = function () {
   getFoursquareHotel();
   getFoursquareFood();
   getFoursquareNightlife();
-  $.when(getFoursquareHotel(), getFoursquareFood(), getFoursquareNightlife()).done(function(){
+  $(document).ajaxStop(function () {
     let counter = 0;
-    console.log("running");
+    console.log(hotelArray);  
     for (let i=0;i<eventArray.length;i++){
       for (let j=0;j<5;j++){
-        $(`#hotelData${i}`).append(hotelArray[counter]);
-        $(`#restaurantData${i}`).append(restaurantArray[counter]);
-        $(`#nightlifeData${i}`).append(nightlifeArray[counter]);
+        $(`#hotelData${i}`).append(`<p>${hotelArray[counter]}</p>`);
+        $(`#restaurantData${i}`).append(`<p>${restaurantArray[counter]}</p>`);
+        $(`#nightlifeData${i}`).append(`<p>${nightlifeArray[counter]}</p>`);
         counter++;
       }
     }
@@ -174,9 +174,9 @@ function getFoursquareHotel() {
       success: function (data) {
         var venues = data.response.venues;
         console.log(data);
-        $.each(venues, function () {
-            hotelArray.push(venues.name);
-        });
+        for (let i=0; i<venues.length; i++){
+          hotelArray.push(venues[i].name)
+        }
       }
     });
   };
@@ -196,9 +196,9 @@ function getFoursquareFood() {
       success: function (data) {
         var venues = data.response.venues;
         console.log(data);
-        $.each(venues, function () {
-          restaurantArray.push(venues.name)
-      });
+        for (let i=0; i<venues.length; i++){
+          restaurantArray.push(venues[i].name)
+        }
     }
     });
   };
@@ -217,9 +217,9 @@ function getFoursquareNightlife() {
       success: function (data) {
         var venues = data.response.venues;
         console.log(data);
-        $.each(venues, function () {
-          nightlifeArray.push(venues.name);
-      });
+        for (let i=0; i<venues.length; i++){
+          nightlifeArray.push(venues[i].name)
+        }
     }
     });
   }
